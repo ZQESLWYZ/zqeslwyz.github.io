@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>new.md</title>
+      <link href="/2024/12/07/new-md/"/>
+      <url>/2024/12/07/new-md/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2024/12/07/hello-world/"/>
+      <url>/2024/12/07/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>1.9 const+指针</p><p>在 C 语言中，<code>const</code> 和指针的组合使用是一个重要的概念，能够为代码提供更好的安全性和可读性。以下是 <code>const</code> 和指针相关的主要知识点总结：</p><h3 id="1-const-的基本概念">1. <code>const</code> 的基本概念</h3><ul><li><p><code>const</code> 关键字：用于声明常量，表示该变量的值不能被修改。</p></li><li><p><strong>常量的使用场景</strong>：当你想保护某个变量不被意外修改时，可以使用 <code>const</code>。</p></li></ul><h3 id="2-const-与指针的组合">2. <code>const</code> 与指针的组合</h3><p><code>const</code> 可以与指针结合使用，以控制指针所指向的数据的可修改性。根据使用位置的不同，<code>const</code> 可以分为以下几种情况：</p><h4 id="2-1-指向常量的指针">2.1. 指向常量的指针</h4><p>c</p><p>复制</p><figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure><ul><li><p><strong>解释</strong>：<code>ptr</code> 是一个指向 <code>int</code> 的指针，但通过 <code>ptr</code> 不能修改所指向的 <code>int</code> 值。</p></li><li><p><strong>使用示例</strong>：</p></li></ul><p>c</p><p>复制</p><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> value = <span class="hljs-number">10</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> *ptr = &amp;value;<br><span class="hljs-comment">// *ptr = 20; // 错误：不能修改</span><br></code></pre></td></tr></table></figure><h4 id="2-2-常量指针">2.2. 常量指针</h4><p>c</p><p>复制</p><figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *<span class="hljs-type">const</span> ptr;<br></code></pre></td></tr></table></figure><ul><li><p><strong>解释</strong>：<code>ptr</code> 是一个常量指针，指针本身的地址不能被改变，但可以通过它修改所指向的值。</p></li><li><p><strong>使用示例</strong>：</p></li></ul><p>c</p><p>复制</p><figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> value1 = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> value2 = <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span> *<span class="hljs-type">const</span> ptr = &amp;value1;<br>*ptr = <span class="hljs-number">30</span>; <span class="hljs-comment">// 合法：修改指向的值</span><br><span class="hljs-comment">// ptr = &amp;value2; // 错误：不能修改指针本身</span><br></code></pre></td></tr></table></figure><h4 id="2-3-指向常量的常量指针">2.3. 指向常量的常量指针</h4><p>c</p><p>复制</p><figure class="highlight autoit"><table><tr><td class="code"><pre><code class="hljs autoit"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> *<span class="hljs-keyword">const</span> <span class="hljs-built_in">ptr</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><ul><li><p><strong>解释</strong>：<code>ptr</code> 是一个常量指针，且指向的值也是常量，既不能修改指针的地址，也不能修改所指向的值。</p></li><li><p><strong>使用示例</strong>：</p></li></ul><p>c</p><p>复制</p><figure class="highlight autoit"><table><tr><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">int</span> value = <span class="hljs-number">10</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> *<span class="hljs-keyword">const</span> <span class="hljs-built_in">ptr</span> = &amp;value<span class="hljs-comment">;</span><br>// *<span class="hljs-built_in">ptr</span> = <span class="hljs-number">20</span><span class="hljs-comment">; // 错误：不能修改</span><br>// <span class="hljs-built_in">ptr</span> = &amp;anotherValue<span class="hljs-comment">; // 错误：不能修改指针本身</span><br></code></pre></td></tr></table></figure><h3 id="3-使用-const-的好处">3. 使用 <code>const</code> 的好处</h3><ul><li><p><strong>提高代码安全性</strong>：通过使用 <code>const</code>，可以防止意外修改数据，从而减少错误。</p></li><li><p><strong>清晰的意图</strong>：使用 <code>const</code> 可以清晰地表明某个数据不应该被修改，提高代码的可读性。</p></li><li><p><strong>优化性能</strong>：编译器可以利用 <code>const</code> 信息进行优化。</p></li></ul><h3 id="4-注意事项">4. 注意事项</h3><ul><li><p>在使用指向常量的指针时，确保指向的内存不会被其他部分修改，尤其是在多线程环境中。</p></li><li><p><code>const</code> 只是一个编译时的约束，运行时并不影响指针的行为，不能用来强制保护内存区域。</p></li></ul><p>通过这些知识点，您可以更好地理解和使用 <code>const</code> 与指针的组合，从而写出更安全和高效的 C 语言代码。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

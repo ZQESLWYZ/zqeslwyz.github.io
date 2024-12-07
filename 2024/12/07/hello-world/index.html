@@ -1,734 +1,245 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="1.9 const+指针 在 C 语言中，const 和指针的组合使用是一个重要的概念，能够为代码提供更好的安全性和可读性。以下是 const 和指针相关的主要知识点总结： 1. const 的基本概念 const 关键字：用于声明常量，表示该变量的值不能被修改。  常量的使用场景：当你想保护某个变量不被意外修改时，可以使用 const。   2. const 与指针的组合const 可以与指针结">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>竹秋二十六的Blog | 竹秋二十六的Blog</title><meta name="author" content="竹秋二十六"><meta name="copyright" content="竹秋二十六"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1.9 const+指针 在 C 语言中，const 和指针的组合使用是一个重要的概念，能够为代码提供更好的安全性和可读性。以下是 const 和指针相关的主要知识点总结： 1. const 的基本概念   const 关键字：用于声明常量，表示该变量的值不能被修改。   常量的使用场景：当你想保护某个变量不被意外修改时，可以使用 const。   2. const 与指针的组合 const 可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSWYZ&#39;S BLOG">
+<meta property="og:title" content="竹秋二十六的Blog">
 <meta property="og:url" content="https://zqeslwyz.github.io/2024/12/07/hello-world/index.html">
-<meta property="og:site_name" content="CSWYZ&#39;S BLOG">
-<meta property="og:description" content="1.9 const+指针 在 C 语言中，const 和指针的组合使用是一个重要的概念，能够为代码提供更好的安全性和可读性。以下是 const 和指针相关的主要知识点总结： 1. const 的基本概念 const 关键字：用于声明常量，表示该变量的值不能被修改。  常量的使用场景：当你想保护某个变量不被意外修改时，可以使用 const。   2. const 与指针的组合const 可以与指针结">
-<meta property="og:locale">
+<meta property="og:site_name" content="竹秋二十六的Blog">
+<meta property="og:description" content="1.9 const+指针 在 C 语言中，const 和指针的组合使用是一个重要的概念，能够为代码提供更好的安全性和可读性。以下是 const 和指针相关的主要知识点总结： 1. const 的基本概念   const 关键字：用于声明常量，表示该变量的值不能被修改。   常量的使用场景：当你想保护某个变量不被意外修改时，可以使用 const。   2. const 与指针的组合 const 可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zqeslwyz.github.io/img/avater.png">
 <meta property="article:published_time" content="2024-12-07T07:37:23.724Z">
-<meta property="article:modified_time" content="2024-12-07T07:47:00.139Z">
-<meta property="article:author" content="CSWYZ">
+<meta property="article:modified_time" content="2024-12-07T10:08:57.232Z">
+<meta property="article:author" content="竹秋二十六">
 <meta name="twitter:card" content="summary">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+<meta name="twitter:image" content="https://zqeslwyz.github.io/img/avater.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zqeslwyz.github.io/2024/12/07/hello-world/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
     }
-  };
-</script>
 
-
-
-  <link rel="canonical" href="https://zqeslwyz.github.io/2024/12/07/hello-world/"/>
-
-
-
-
-
-  <title> | CSWYZ'S BLOG</title>
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
 
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-
-
-
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
-
-  
-  
+      const theme = saveToLocal.get('theme')
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+          const hour = new Date().getHours()
+          const isNight = hour <= 20 || hour >= 7
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">CSWYZ'S BLOG</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
       
-        <p class="site-subtitle">竹秋二十六的小窝</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zqeslwyz.github.io/2024/12/07/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CSWYZ'S BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline"></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-12-07T15:37:23+08:00">
-                2024-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>1.9 const+指针</p>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: ture,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: ture,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '竹秋二十六的Blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avater.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/top.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">竹秋二十六的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">竹秋二十六的Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-07T07:37:23.724Z" title="发表于 2024-12-07 15:37:23">2024-12-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-07T10:08:57.232Z" title="更新于 2024-12-07 18:08:57">2024-12-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">624</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>1.9 const+指针</p>
 <p>在 C 语言中，<code>const</code> 和指针的组合使用是一个重要的概念，能够为代码提供更好的安全性和可读性。以下是 <code>const</code> 和指针相关的主要知识点总结：</p>
-<h3 id="1-const-的基本概念"><a href="#1-const-的基本概念" class="headerlink" title="1. const 的基本概念"></a>1. <code>const</code> 的基本概念</h3><ul>
-<li><p><code>const</code> 关键字：用于声明常量，表示该变量的值不能被修改。</p>
+<h3 id="1-const-的基本概念">1. <code>const</code> 的基本概念</h3>
+<ul>
+<li>
+<p><code>const</code> 关键字：用于声明常量，表示该变量的值不能被修改。</p>
 </li>
-<li><p><strong>常量的使用场景</strong>：当你想保护某个变量不被意外修改时，可以使用 <code>const</code>。</p>
+<li>
+<p><strong>常量的使用场景</strong>：当你想保护某个变量不被意外修改时，可以使用 <code>const</code>。</p>
 </li>
 </ul>
-<h3 id="2-const-与指针的组合"><a href="#2-const-与指针的组合" class="headerlink" title="2. const 与指针的组合"></a>2. <code>const</code> 与指针的组合</h3><p><code>const</code> 可以与指针结合使用，以控制指针所指向的数据的可修改性。根据使用位置的不同，<code>const</code> 可以分为以下几种情况：</p>
-<h4 id="2-1-指向常量的指针"><a href="#2-1-指向常量的指针" class="headerlink" title="2.1. 指向常量的指针"></a>2.1. 指向常量的指针</h4><p>c</p>
+<h3 id="2-const-与指针的组合">2. <code>const</code> 与指针的组合</h3>
+<p><code>const</code> 可以与指针结合使用，以控制指针所指向的数据的可修改性。根据使用位置的不同，<code>const</code> 可以分为以下几种情况：</p>
+<h4 id="2-1-指向常量的指针">2.1. 指向常量的指针</h4>
+<p>c</p>
 <p>复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const int *ptr;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>解释</strong>：<code>ptr</code> 是一个指向 <code>int</code> 的指针，但通过 <code>ptr</code> 不能修改所指向的 <code>int</code> 值。</p>
+<li>
+<p><strong>解释</strong>：<code>ptr</code> 是一个指向 <code>int</code> 的指针，但通过 <code>ptr</code> 不能修改所指向的 <code>int</code> 值。</p>
 </li>
-<li><p><strong>使用示例</strong>：</p>
+<li>
+<p><strong>使用示例</strong>：</p>
 </li>
 </ul>
 <p>c</p>
 <p>复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int value = 10;</span><br><span class="line">const int *ptr = &amp;value;</span><br><span class="line">// *ptr = 20; // 错误：不能修改</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-常量指针"><a href="#2-2-常量指针" class="headerlink" title="2.2. 常量指针"></a>2.2. 常量指针</h4><p>c</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> value = <span class="hljs-number">10</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> *ptr = &amp;value;<br><span class="hljs-comment">// *ptr = 20; // 错误：不能修改</span><br></code></pre></td></tr></table></figure>
+<h4 id="2-2-常量指针">2.2. 常量指针</h4>
+<p>c</p>
 <p>复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *const ptr;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *<span class="hljs-type">const</span> ptr;<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>解释</strong>：<code>ptr</code> 是一个常量指针，指针本身的地址不能被改变，但可以通过它修改所指向的值。</p>
+<li>
+<p><strong>解释</strong>：<code>ptr</code> 是一个常量指针，指针本身的地址不能被改变，但可以通过它修改所指向的值。</p>
 </li>
-<li><p><strong>使用示例</strong>：</p>
+<li>
+<p><strong>使用示例</strong>：</p>
 </li>
 </ul>
 <p>c</p>
 <p>复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int value1 = 10;</span><br><span class="line">int value2 = 20;</span><br><span class="line">int *const ptr = &amp;value1;</span><br><span class="line">*ptr = 30; // 合法：修改指向的值</span><br><span class="line">// ptr = &amp;value2; // 错误：不能修改指针本身</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-3-指向常量的常量指针"><a href="#2-3-指向常量的常量指针" class="headerlink" title="2.3. 指向常量的常量指针"></a>2.3. 指向常量的常量指针</h4><p>c</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> value1 = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> value2 = <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span> *<span class="hljs-type">const</span> ptr = &amp;value1;<br>*ptr = <span class="hljs-number">30</span>; <span class="hljs-comment">// 合法：修改指向的值</span><br><span class="hljs-comment">// ptr = &amp;value2; // 错误：不能修改指针本身</span><br></code></pre></td></tr></table></figure>
+<h4 id="2-3-指向常量的常量指针">2.3. 指向常量的常量指针</h4>
+<p>c</p>
 <p>复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const int *const ptr;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight autoit"><table><tr><td class="code"><pre><code class="hljs autoit"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> *<span class="hljs-keyword">const</span> <span class="hljs-built_in">ptr</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>解释</strong>：<code>ptr</code> 是一个常量指针，且指向的值也是常量，既不能修改指针的地址，也不能修改所指向的值。</p>
+<li>
+<p><strong>解释</strong>：<code>ptr</code> 是一个常量指针，且指向的值也是常量，既不能修改指针的地址，也不能修改所指向的值。</p>
 </li>
-<li><p><strong>使用示例</strong>：</p>
+<li>
+<p><strong>使用示例</strong>：</p>
 </li>
 </ul>
 <p>c</p>
 <p>复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int value = 10;</span><br><span class="line">const int *const ptr = &amp;value;</span><br><span class="line">// *ptr = 20; // 错误：不能修改</span><br><span class="line">// ptr = &amp;anotherValue; // 错误：不能修改指针本身</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-使用-const-的好处"><a href="#3-使用-const-的好处" class="headerlink" title="3. 使用 const 的好处"></a>3. 使用 <code>const</code> 的好处</h3><ul>
-<li><p><strong>提高代码安全性</strong>：通过使用 <code>const</code>，可以防止意外修改数据，从而减少错误。</p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">int</span> value = <span class="hljs-number">10</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> *<span class="hljs-keyword">const</span> <span class="hljs-built_in">ptr</span> = &amp;value<span class="hljs-comment">;</span><br>// *<span class="hljs-built_in">ptr</span> = <span class="hljs-number">20</span><span class="hljs-comment">; // 错误：不能修改</span><br>// <span class="hljs-built_in">ptr</span> = &amp;anotherValue<span class="hljs-comment">; // 错误：不能修改指针本身</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-使用-const-的好处">3. 使用 <code>const</code> 的好处</h3>
+<ul>
+<li>
+<p><strong>提高代码安全性</strong>：通过使用 <code>const</code>，可以防止意外修改数据，从而减少错误。</p>
 </li>
-<li><p><strong>清晰的意图</strong>：使用 <code>const</code> 可以清晰地表明某个数据不应该被修改，提高代码的可读性。</p>
+<li>
+<p><strong>清晰的意图</strong>：使用 <code>const</code> 可以清晰地表明某个数据不应该被修改，提高代码的可读性。</p>
 </li>
-<li><p><strong>优化性能</strong>：编译器可以利用 <code>const</code> 信息进行优化。</p>
+<li>
+<p><strong>优化性能</strong>：编译器可以利用 <code>const</code> 信息进行优化。</p>
 </li>
 </ul>
-<h3 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4. 注意事项"></a>4. 注意事项</h3><ul>
-<li><p>在使用指向常量的指针时，确保指向的内存不会被其他部分修改，尤其是在多线程环境中。</p>
+<h3 id="4-注意事项">4. 注意事项</h3>
+<ul>
+<li>
+<p>在使用指向常量的指针时，确保指向的内存不会被其他部分修改，尤其是在多线程环境中。</p>
 </li>
-<li><p><code>const</code> 只是一个编译时的约束，运行时并不影响指针的行为，不能用来强制保护内存区域。</p>
+<li>
+<p><code>const</code> 只是一个编译时的约束，运行时并不影响指针的行为，不能用来强制保护内存区域。</p>
 </li>
 </ul>
 <p>通过这些知识点，您可以更好地理解和使用 <code>const</code> 与指针的组合，从而写出更安全和高效的 C 语言代码。</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name"></p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives%7C%7C%20archive">
-              
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-const-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1. const 的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-const-%E4%B8%8E%E6%8C%87%E9%92%88%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">2. const 与指针的组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 指向常量的指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 常量指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 指向常量的常量指针</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8-const-%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">3.</span> <span class="nav-text">3. 使用 const 的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">4. 注意事项</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">CSWYZ</span>
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zqeslwyz.github.io">竹秋二十六</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zqeslwyz.github.io/2024/12/07/hello-world/">https://zqeslwyz.github.io/2024/12/07/hello-world/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zqeslwyz.github.io" target="_blank">竹秋二十六的Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avater.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2024/12/07/new-md/" title="new.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">new.md</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avater.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">竹秋二十六</div><div class="author-info-description">人生小满是真谛！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ZQESLWYZ"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ZQESLWYZ" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zqeslwyz@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-const-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1. const 的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-const-%E4%B8%8E%E6%8C%87%E9%92%88%E7%9A%84%E7%BB%84%E5%90%88"><span class="toc-text">2. const 与指针的组合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">2.1. 指向常量的指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="toc-text">2.2. 常量指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="toc-text">2.3. 指向常量的常量指针</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-const-%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-text">3. 使用 const 的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">4. 注意事项</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/07/new-md/" title="new.md">new.md</a><time datetime="2024-12-07T08:07:10.000Z" title="发表于 2024-12-07 16:07:10">2024-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/07/hello-world/" title="无标题">无标题</a><time datetime="2024-12-07T07:37:23.724Z" title="发表于 2024-12-07 15:37:23">2024-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 竹秋二十六</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
   }
-</script>
 
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (false) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
