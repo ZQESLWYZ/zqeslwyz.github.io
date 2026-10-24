@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yizhao Wang — 3D Computer Vision &amp; Generative AI</title>
+<meta name="description" content="Yizhao Wang — undergraduate researcher at Henan Institute of Science and Technology working on 3D computer vision, 3D Gaussian Splatting, efficient generative models, and embodied AI.">
+<meta name="author" content="Yizhao Wang">
+
+<!-- Open Graph / link preview -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Yizhao Wang — 3D Computer Vision &amp; Generative AI">
+<meta property="og:description" content="Publications, research projects, and awards in 3D Gaussian Splatting, efficient text-to-image generation, metric depth calibration, and embodied AI.">
+<meta property="og:url" content="https://zqeslwyz.github.io/">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Set the theme before first paint to avoid a light/dark flash -->
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('theme');
+    var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', saved || sys);
+  } catch (e) { /* keep the default theme */ }
+})();
+</script>
+</head>
+
+<body id="top">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ==================================================================
+     Header
+     ================================================================== -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">YW</span>
+      <span class="brand-name">Yizhao Wang</span>
+    </a>
+
+    <nav id="site-nav" class="site-nav" aria-label="Section navigation">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
+      <a class="nav-cv" href="assets/cv.pdf">CV&nbsp;PDF</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.6v2.4M12 19v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.6 12H5M19 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>
+      </button>
+      <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><g stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></g></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================================================================
+       Hero
+       ================================================================ -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="hero-eyebrow">Undergraduate Researcher · B.Eng. Computer Science (2023–2027)</p>
+      <h1 class="hero-name">Yizhao Wang</h1>
+      <p class="hero-tagline">
+        3D Computer Vision &amp; Generative AI — making reconstruction and generation
+        <em>reliable</em> under sparse input, tight compute, and honest evaluation.
+      </p>
+
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:zqeslwyz@163.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"/><path d="M3.4 6.6 12 12.8l8.6-6.2"/></svg>
+            zqeslwyz@163.com
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/zqeslwyz" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4a9.6 9.6 0 0 0-3.04 18.7c.48.09.66-.21.66-.47v-1.8c-2.67.58-3.23-1.15-3.23-1.15-.44-1.1-1.07-1.4-1.07-1.4-.87-.6.07-.58.07-.58.96.07 1.47.99 1.47.99.86 1.46 2.25 1.04 2.8.79.09-.62.34-1.04.61-1.28-2.13-.24-4.37-1.07-4.37-4.74 0-1.05.37-1.9 1-2.58-.1-.24-.43-1.22.09-2.54 0 0 .8-.26 2.63 1a9.1 9.1 0 0 1 4.79 0c1.83-1.26 2.63-1 2.63-1 .52 1.32.19 2.3.1 2.54.62.68.99 1.53.99 2.58 0 3.68-2.24 4.5-4.38 4.73.35.3.66.89.66 1.79v2.65c0 .26.18.57.67.47A9.6 9.6 0 0 0 12 2.4z"/></svg>
+            zqeslwyz
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?user=wkGd19QAAAAJ" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 1.8 9.2 12 14.4l8.6-4.4v5.6h1.6V9.2z"/><path d="M5.6 12.3v3.9c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-3.9L12 15.4z"/></svg>
+            Google Scholar
+          </a>
+        </li>
+        <li class="contact-plain">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.6-6.1 6.6-11a6.6 6.6 0 1 0-13.2 0c0 4.9 6.6 11 6.6 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Sanmenxia City, Henan, China
+        </li>
+      </ul>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#publications">View publications</a>
+        <a class="btn" href="assets/cv.pdf">Download CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       About / Research interests
+       ================================================================ -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <h2 class="section-title">Research Interests</h2>
+
+      <div class="interest-grid">
+        <article class="interest-card">
+          <h3>3D Computer Vision</h3>
+          <p>Novel-view synthesis, 3D Gaussian Splatting, sparse-view reconstruction, surface geometry and depth consistency.</p>
+        </article>
+        <article class="interest-card">
+          <h3>Generative AI</h3>
+          <p>Rectified-flow text-to-image models, mixture-of-experts capacity, linear attention, and quantization-aware training.</p>
+        </article>
+        <article class="interest-card">
+          <h3>Learning Methods</h3>
+          <p>Calibrated decision-making, uncertainty and failure prediction, few-shot robotics policies, flow matching.</p>
+        </article>
+        <article class="interest-card">
+          <h3>Research Workflow</h3>
+          <p>Reproducible pipelines, scene-disjoint evaluation splits, ablations that isolate each design choice, honest metric reporting.</p>
+        </article>
+      </div>
+
+      <p class="interest-note">
+        Current focus: letting a model know <em>when it should not act</em> — calibrated rejection, uncertainty gating,
+        and evaluation protocols that separate genuine geometric evidence from image-space plausibility.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Education
+       ================================================================ -->
+  <section id="education" class="section section-alt">
+    <div class="wrap">
+      <h2 class="section-title">Education</h2>
+
+      <article class="entry">
+        <div class="entry-head">
+          <div>
+            <h3 class="entry-title">Henan Institute of Science and Technology</h3>
+            <p class="entry-sub">B.Eng. in Computer Science · Henan, China</p>
+          </div>
+          <span class="entry-date">2023 – 2027</span>
+        </div>
+        <ul class="entry-list">
+          <li>Four-year undergraduate program with a required graduation thesis.</li>
+          <li>WAM (Weighted Average Mark): <strong>83.05</strong>.</li>
+          <li>Major foundation coursework WAM: <strong>88.9</strong>.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Publications
+       ================================================================ -->
+  <section id="publications" class="section">
+    <div class="wrap">
+      <h2 class="section-title">Publications</h2>
+
+      <!-- ------------------------------------------------------------------
+           TODO(publications): 这里只放已录用/已发表的论文。
+           下面的作者列表、页码、DOI 请用 publications.bib 里的真实字段核对。
+           ------------------------------------------------------------------ -->
+      <ol class="pub-list">
+        <li class="pub">
+          <span class="pub-badge pub-badge-conf">WACV 2027</span>
+          <div class="pub-body">
+            <h3 class="pub-title">CalibGS: Calibrated Selective Geometric Completion</h3>
+            <p class="pub-authors"><strong>Yizhao Wang</strong>, et al.</p>
+            <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2027.</p>
+            <p class="pub-note">Spending primitives only where multi-view evidence supports them.</p>
+          </div>
+        </li>
+
+        <li class="pub">
+          <span class="pub-badge pub-badge-conf">ACCV 2026</span>
+          <div class="pub-body">
+            <h3 class="pub-title">Nexus: Structured Synergy for Efficient Text-to-Image Generation</h3>
+            <p class="pub-authors"><strong>Yizhao Wang</strong>, et al.</p>
+            <p class="pub-venue">Asian Conference on Computer Vision (ACCV), 2026.</p>
+            <p class="pub-note">Competitive quality at a fraction of the activated compute.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="subhead">Preprints</h3>
+
+      <!-- ------------------------------------------------------------------
+           TODO(publications): 以下 4 条对应 publications.bib 的
+             wang2026beyond, wang2026tpflow, wang2026fusion, wang2026visibility
+           我目前只有 bib key，没有标题/作者/发表平台。
+           把每条替换成下面这样的完整条目，然后删掉 data-todo 属性（去掉黄色警示样式）：
+
+           <li class="pub">
+             <span class="pub-badge pub-badge-pre">Preprint</span>
+             <div class="pub-body">
+               <h3 class="pub-title">真实标题</h3>
+               <p class="pub-authors"><strong>Yizhao Wang</strong>, Coauthor, Coauthor.</p>
+               <p class="pub-venue">arXiv preprint, 2026. <a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv:XXXX.XXXXX</a></p>
+               <p class="pub-note">一句话贡献。</p>
+             </div>
+           </li>
+           ------------------------------------------------------------------ -->
+      <ol class="pub-list">
+        <li class="pub" data-todo="wang2026beyond">
+          <span class="pub-badge pub-badge-todo">TODO</span>
+          <div class="pub-body">
+            <h3 class="pub-title">Title needed — <code>wang2026beyond</code></h3>
+            <p class="pub-authors"><strong>Yizhao Wang</strong>, et al.</p>
+            <p class="pub-venue">Venue / arXiv ID needed (from <code>publications.bib</code>).</p>
+          </div>
+        </li>
+        <li class="pub" data-todo="wang2026tpflow">
+          <span class="pub-badge pub-badge-todo">TODO</span>
+          <div class="pub-body">
+            <h3 class="pub-title">Title needed — <code>wang2026tpflow</code></h3>
+            <p class="pub-authors"><strong>Yizhao Wang</strong>, et al.</p>
+            <p class="pub-venue">Venue / arXiv ID needed (from <code>publications.bib</code>).</p>
+          </div>
+        </li>
+        <li class="pub" data-todo="wang2026fusion">
+          <span class="pub-badge pub-badge-todo">TODO</span>
+          <div class="pub-body">
+            <h3 class="pub-title">Title needed — <code>wang2026fusion</code></h3>
+            <p class="pub-authors"><strong>Yizhao Wang</strong>, et al.</p>
+            <p class="pub-venue">Venue / arXiv ID needed (from <code>publications.bib</code>).</p>
+          </div>
+        </li>
+        <li class="pub" data-todo="wang2026visibility">
+          <span class="pub-badge pub-badge-todo">TODO</span>
+          <div class="pub-body">
+            <h3 class="pub-title">Title needed — <code>wang2026visibility</code></h3>
+            <p class="pub-authors"><strong>Yizhao Wang</strong>, et al.</p>
+            <p class="pub-venue">Venue / arXiv ID needed (from <code>publications.bib</code>).</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Research projects
+       ================================================================ -->
+  <section id="projects" class="section section-alt">
+    <div class="wrap">
+      <h2 class="section-title">Research Projects</h2>
+
+      <article class="project">
+        <div class="project-head">
+          <h3 class="project-title">CalibGS — Calibrated Selective Geometric Completion</h3>
+          <div class="project-meta"><span class="chip chip-accent">WACV 2027</span><span class="chip">3D Gaussian Splatting</span></div>
+        </div>
+        <p class="project-tagline">Spending primitives only where multi-view evidence supports them.</p>
+        <ul class="project-list">
+          <li>Recast 3D Gaussian Splatting densification as a calibrated three-action decision — free propagation, surface-constrained completion, or rejection — instead of reading every unexplained image residual as evidence for new geometry.</li>
+          <li>Built the full risk pipeline: multi-view evidence features (track support, triangulation geometry, reprojection consistency, gradient agreement, local planar structure), an MLP predictor for the early held-out-view damage event, and a monotone isotonic calibration map fitted on a scene-disjoint split, leaving only the two risk thresholds tunable.</li>
+          <li>On sparse-view DTU (24 input views) under a matched 0.20M-Gaussian budget, reached <strong>24.18 dB PSNR</strong> and <strong>0.694 mm Chamfer distance</strong>, cutting Chamfer by <strong>31.4%</strong> and depth inconsistency by <strong>36.6%</strong> relative to GaussianPro, and outperformed 3DGS, 2DGS, and Sparse2DGS on DTU, Replica, Tanks and Temples, and Mip-NeRF 360.</li>
+          <li>Showed that the gate measures geometric failure rather than image error alone: <strong>0.836 AUROC at 0.024 ECE</strong>, versus 0.684 AUROC and 0.118 ECE for a residual-only score, with ablations separating the contributions of calibration, rejection, and the planar constraint.</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3 class="project-title">Nexus — Structured Synergy for Efficient Text-to-Image Generation</h3>
+          <div class="project-meta"><span class="chip chip-accent">ACCV 2026</span><span class="chip">Rectified Flow &amp; Efficient Generation</span></div>
+        </div>
+        <p class="project-tagline">Competitive quality at a fraction of the activated compute.</p>
+        <ul class="project-list">
+          <li>Designed Nexus, a rectified-flow text-to-image framework that jointly optimizes three levers usually studied in isolation: sparse MoE-FFN layers for capacity at low activated cost, Gated DeltaNet linear attention for near-linear scaling with sequence length, and expert-level low-bit quantization-aware training.</li>
+          <li>Set the block layout (six dual-stream layers followed by single-stream blocks, CLIP-G/14 and T5-XXL conditioning, no added cross-attention) and the per-expert INT4 scaling scheme that keeps the router and state matrix in FP16, where uniform global INT4 degrades FID from 5.8 to 7.9.</li>
+          <li>A 7B-parameter model activates only 1.6B parameters: <strong>FID 5.8</strong> and <strong>CLIP score 0.329</strong> on COCO-30K, <strong>1.42 s</strong> per 512×512 image at 3.2 GB peak memory and 185 GFLOPs on a single A100 — about 2.8× faster and 1.7× lighter than SD3-Medium.</li>
+          <li>Kept prompt following near the large-model tier under a common INT4 budget (GenEval 0.61, DPG-bench 82.47, ahead of SD3-Medium-INT4 and FLUX.1-INT4 in latency), and scaled to 1024×1024 and 2048×2048 (11.2 s, 12.5 GB) where quadratic attention becomes prohibitively slow or runs out of memory.</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3 class="project-title">Local-to-Global Metric Depth Calibration</h3>
+          <div class="project-meta"><span class="chip chip-accent">Jan. 2026 – Mar. 2026</span><span class="chip">Monocular Depth</span></div>
+        </div>
+        <p class="project-tagline">Turning relative depth into metric depth, region by region.</p>
+        <ul class="project-list">
+          <li>Built a boundary-aware region graph combining global affine calibration, selectively activated local residuals, and collapse regularization without camera metadata or sparse depth.</li>
+          <li>With frozen Depth Anything V2-Large features, reduced zero-shot DIODE AbsRel from <strong>0.2660 to 0.2358</strong> and increased δ<sub>1</sub> from <strong>0.6680 to 0.7037</strong>.</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3 class="project-title">Task-Prototype Guided Flow Matching</h3>
+          <div class="project-meta"><span class="chip chip-accent">Oct. 2025 – Dec. 2025</span><span class="chip">Embodied AI</span></div>
+        </div>
+        <p class="project-tagline">Learning robot skills from a handful of demonstrations.</p>
+        <ul class="project-list">
+          <li>Designed a few-shot VLA policy using symmetric cross-attention task prototypes, a prototype-adaptive flow prior, gated AdaLN, and episodic support-query training.</li>
+          <li>Built the PyTorch/ODE action-generation pipeline for LEROBOT-SO101; achieved <strong>66.8%, 79.6%, and 82.1%</strong> success at 1/4/6 shots and 54.3 ms inference at 10 Hz.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Honors & Awards
+       ================================================================ -->
+  <section id="awards" class="section">
+    <div class="wrap">
+      <h2 class="section-title">Honors &amp; Awards</h2>
+
+      <ul class="award-list">
+        <li class="award">
+          <div class="award-body">
+            <h3 class="award-title">Entrepreneurship Star</h3>
+            <p class="award-by">Henan Institute of Science and Technology · 10k RMB bonus</p>
+          </div>
+          <span class="award-year">2026</span>
+        </li>
+        <li class="award">
+          <div class="award-body">
+            <h3 class="award-title">National Innovation Training Program</h3>
+            <p class="award-by">Ministry of Education · Project Leader</p>
+          </div>
+          <span class="award-year">2025</span>
+        </li>
+        <li class="award">
+          <div class="award-body">
+            <h3 class="award-title">Provincial First Prize, C++ Algorithm Design Contest</h3>
+            <p class="award-by">Ministry of IIT</p>
+          </div>
+          <span class="award-year">2025</span>
+        </li>
+        <li class="award">
+          <div class="award-body">
+            <h3 class="award-title">Provincial First Prize, Student Business Plan Competition</h3>
+            <p class="award-by">Central Committee of the CYLC</p>
+          </div>
+          <span class="award-year">2024</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year">2026</span> Yizhao Wang · Built as a static GitHub Pages site.</p>
+    <p class="footer-links">
+      <a href="mailto:zqeslwyz@163.com">Email</a>
+      <a href="https://github.com/zqeslwyz">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=wkGd19QAAAAJ">Scholar</a>
+      <a href="#top">Top</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
