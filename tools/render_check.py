@@ -4,7 +4,7 @@ Asserts what static analysis cannot:
   * style.css applied (page/card colours, Georgia serif, heading rules)
   * desktop two-column header, mobile single-column collapse
   * no horizontal overflow at 1180px and 390px
-  * portrait either loads from assets/photo.jpg or degrades to the placeholder
+  * portrait either loads from assets/photo.png or degrades to the placeholder
   * publication list has all 6 entries and no placeholder left
   * no console errors or uncaught exceptions
 
@@ -160,7 +160,7 @@ def main():
         if (!el) return 'none'; const r = el.getBoundingClientRect();
         return Math.round(r.width) + 'x' + Math.round(r.height); })()""")
     if img_ok:
-        notes.append("portrait image loads from assets/photo.jpg")
+        notes.append("portrait image loads from assets/photo.png")
     elif fb_box not in ("none", "0x0"):
         notes.append(f"portrait falls back to the initials placeholder ({fb_box})")
     else:
@@ -233,9 +233,9 @@ def main():
             if entry.get("level") in ("error", "warning"):
                 text = entry.get("text", "")
                 url = entry.get("url", "")
-                # assets/photo.jpg is not uploaded yet (see README section 4):
+                # assets/photo.png missing (see README section 4): that 404 is
                 # its 404 is expected and already reported as a static warning.
-                if "photo.jpg" in url or "photo.jpg" in text:
+                if "photo.png" in url or "photo.png" in text:
                     tolerated.append(f"{entry['level']}: {text[:120]}")
                     continue
                 errors.append(f"{entry['level']}: {text[:140]} (url={url[:80]})")

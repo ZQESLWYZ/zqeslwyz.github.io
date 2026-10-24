@@ -1,6 +1,6 @@
 /* ==========================================================================
    Yizhao Wang — academic homepage
-   One job only: if assets/photo.jpg is missing, replace the broken <img>
+   One job only: if assets/photo.png is missing, replace the broken <img>
    with a tidy initials placeholder so the page never shows a broken icon.
    No dependencies, no tracking, no build step.
    ========================================================================== */
@@ -27,7 +27,7 @@
 
     var hint = document.createElement('span');
     hint.className = 'hint';
-    hint.textContent = 'add assets/photo.jpg';
+    hint.textContent = 'add assets/photo.png';
 
     box.appendChild(initials);
     box.appendChild(hint);

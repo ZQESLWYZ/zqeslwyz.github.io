@@ -154,7 +154,7 @@ a:hover {
   margin-top: 0.4em;
 }
 
-/* Shown by js/main.js when assets/photo.jpg is not there yet. */
+/* Shown by js/main.js when assets/photo.png is not there yet. */
 .portrait-fallback {
   display: grid;
   place-content: center;

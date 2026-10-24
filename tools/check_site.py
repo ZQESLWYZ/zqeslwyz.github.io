@@ -65,7 +65,7 @@ class Refs(HTMLParser):
                 self.refs.append(value)
 
 
-PENDING = set()   # nothing pending: assets/photo.jpg is in place
+PENDING = set()   # nothing pending: assets/photo.png is in place
 warnings = []
 
 

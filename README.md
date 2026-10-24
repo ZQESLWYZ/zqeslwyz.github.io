@@ -15,7 +15,7 @@ index.html               全部内容都在这里（唯一需要改内容的文�
 404.html                 GitHub Pages 自定义 404 页
 css/style.css            全部样式（jemdoc 风格 + 响应式 + 打印样式）
 js/main.js               只管一件事：头像加载失败时降级为姓名占位块
-assets/photo.jpg         头像（248×256）
+assets/photo.png         头像（600×600 透明底，144 KB）
 assets/favicon.svg       站点图标
 tools/check_site.py      上线前自检：HTML 标签 / CSS 括号 / JS 语法 / 本地引用（零依赖）
 tools/render_check.py    渲染检查：真实浏览器里核对版式、溢出、头像、论文条目
@@ -117,9 +117,8 @@ git push -u origin main
    换成
    `[<a href="URL" target="_blank" rel="noopener">Code</a>]`。
    全部补齐后 `tools/check_site.py` 的告警会消失（它会数还剩几个占位）。
-2. **换一张高清头像（建议）**。现在这张是 248×256、8 KB，显示宽度约 260px，勉强够用但偏糊。
-   有更大原图（比如 600×620 以上、< 300 KB）直接覆盖 `assets/photo.jpg` 即可，
-   顺手把第 61–62 行 `<img>` 的 `width` / `height` 改成新图的真实像素。
+2. **头像**。当前是 `assets/photo.png`（600×600、透明底、144 KB，由你给的 1024×1024 原图压缩而来）。
+   想换就覆盖这个文件，并把第 61–62 行 `<img>` 的 `width` / `height` 改成新图的真实像素。
 3. **页脚日期**：`Last update: October 2026` 是写死的，改内容时顺手更新。
 4. **中文名（可选）**：参考站标题是 `Shuo Yang 杨朔`。想加中文名就改 `<title>` 和第 32 行的 `<h1>`
    （现在只有英文名 —— 我没有你的中文名，没有替你编）。
@@ -134,7 +133,7 @@ git push -u origin main
 | --- | --- |
 | 姓名 / 职位 / 单位 / 邮箱 | `index.html` 左栏 `.identity` 区块 |
 | 图标链接（GitHub / Scholar / Email） | 左栏 `.links` 里的三个 `<a>` |
-| 头像 | 替换 `assets/photo.jpg`（+ 第 61–62 行宽高） |
+| 头像 | 替换 `assets/photo.png`（+ 第 61–62 行宽高） |
 | 简介与研究方向 | `Short Bio` 两段 `<p>` + `.interests` 一行 |
 | 论文条目 | `Selected Publications` 和 `Preprints` 的 `<ul class="pubs">` |
 | 项目条目 | `Research Projects` 的 `<ul class="projects">`（子列表是 `<li>` 里的嵌套 `<ul>`） |
@@ -152,7 +151,7 @@ git push -u origin main
 - 项目从卡片改成方块符号列表（项目标题 + 一句 tagline + 缩进子条目）。
 - 去掉「Download CV (PDF)」按钮；想保留就把简历编译成 `assets/cv.pdf`，在左栏 `.links`
   里加一行 `<a href="assets/cv.pdf">CV</a>`。
-- 新增头像：`assets/photo.jpg` + `js/main.js` 的加载失败降级逻辑。
+- 头像：`assets/photo.png`（600×600 透明底）+ `js/main.js` 的加载失败降级逻辑。
 - 论文标题 / 作者按 `publications.bib` 修正（此前两篇正式论文写的是 `et al.`，实际为唯一作者）。
 - 清理了此前误提交进仓库的临时文件，并加了 `.gitignore`。
 - 每条论文下面都加了 `[Paper] [Code]` 行：arXiv 编号与 GitHub 仓库经外部核对后填入真链接，
