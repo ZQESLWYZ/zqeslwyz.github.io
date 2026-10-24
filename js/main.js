@@ -1,98 +1,44 @@
 /* ==========================================================================
-   Yizhao Wang — personal academic site
-   Vanilla JS, no dependencies. Handles: theme toggle, mobile nav,
-   active-section highlighting, and the footer year.
+   Yizhao Wang — academic homepage
+   One job only: if assets/photo.jpg is missing, replace the broken <img>
+   with a tidy initials placeholder so the page never shows a broken icon.
+   No dependencies, no tracking, no build step.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var root = document.documentElement;
-  var themeBtn = document.getElementById('theme-toggle');
-  var navToggle = document.getElementById('nav-toggle');
-  var nav = document.getElementById('site-nav');
+  var img = document.getElementById('portrait');
+  if (!img) return;
 
-  /* ------------------------------------------------------------- theme */
-  function currentTheme() {
-    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  var replaced = false;
+
+  function useFallback() {
+    if (replaced) return;
+    replaced = true;
+
+    var box = document.createElement('div');
+    box.className = 'portrait-fallback';
+    box.setAttribute('role', 'img');
+    box.setAttribute('aria-label', 'Placeholder for portrait photo');
+
+    var initials = document.createElement('span');
+    initials.className = 'initials';
+    initials.textContent = 'YW';
+
+    var hint = document.createElement('span');
+    hint.className = 'hint';
+    hint.textContent = 'add assets/photo.jpg';
+
+    box.appendChild(initials);
+    box.appendChild(hint);
+
+    if (img.parentNode) img.parentNode.replaceChild(box, img);
   }
 
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function () {
-      var next = currentTheme() === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
-    });
+  /* The error may already have fired before this script ran, so check first. */
+  if (img.complete && img.naturalWidth === 0) {
+    useFallback();
+  } else {
+    img.addEventListener('error', useFallback);
   }
-
-  /* Follow the OS only while the visitor has not picked a theme manually. */
-  if (window.matchMedia) {
-    var mq = window.matchMedia('(prefers-color-scheme: dark)');
-    var onSystemChange = function (event) {
-      var saved = null;
-      try { saved = localStorage.getItem('theme'); } catch (e) { /* ignore */ }
-      if (saved) return;
-      root.setAttribute('data-theme', event.matches ? 'dark' : 'light');
-    };
-    if (mq.addEventListener) mq.addEventListener('change', onSystemChange);
-    else if (mq.addListener) mq.addListener(onSystemChange);
-  }
-
-  /* ---------------------------------------------------------- mobile nav */
-  function closeNav() {
-    if (!nav || !navToggle) return;
-    nav.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  }
-
-  if (navToggle && nav) {
-    navToggle.addEventListener('click', function (event) {
-      event.stopPropagation();
-      var open = nav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
-    nav.addEventListener('click', function (event) {
-      if (event.target.closest('a')) closeNav();
-    });
-
-    document.addEventListener('click', function (event) {
-      if (nav.classList.contains('open') && !nav.contains(event.target)) closeNav();
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeNav();
-    });
-  }
-
-  /* ----------------------------------------- active section in the header */
-  var navLinks = nav ? Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]')) : [];
-  var sections = navLinks
-    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
-    .filter(Boolean);
-
-  if (sections.length && 'IntersectionObserver' in window) {
-    var visibility = new Map();
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        visibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
-      });
-
-      var bestId = null;
-      var bestRatio = 0;
-      visibility.forEach(function (ratio, id) {
-        if (ratio > bestRatio) { bestRatio = ratio; bestId = id; }
-      });
-
-      navLinks.forEach(function (link) {
-        link.classList.toggle('active', bestId !== null && link.getAttribute('href') === '#' + bestId);
-      });
-    }, { rootMargin: '-72px 0px -55% 0px', threshold: [0, 0.15, 0.35, 0.6, 1] });
-
-    sections.forEach(function (section) { observer.observe(section); });
-  }
-
-  /* -------------------------------------------------------- footer year */
-  var year = document.getElementById('year');
-  if (year) year.textContent = String(new Date().getFullYear());
 })();

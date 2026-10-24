@@ -64,7 +64,7 @@ class Refs(HTMLParser):
                 self.refs.append(value)
 
 
-PENDING = {"assets/cv.pdf"}   # documented in README section 4: upload the compiled CV
+PENDING = {"assets/photo.jpg"}   # documented in README section 4: upload your portrait
 warnings = []
 
 
