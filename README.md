@@ -99,11 +99,24 @@ git push -u origin main
 
 ## 4. 还可以补的东西（都不阻塞上线）
 
-1. **论文链接**。参考站每条都带 `[Paper] [Code]`。`publications.bib` 里还没有 arXiv 号，
-   所以现在没有外链；等号码公开后，在对应条目的作者行下面加一行即可：
-   ```html
-   <p>[<a href="https://arxiv.org/abs/XXXX.XXXXX">Paper</a>] [<a href="https://github.com/...">Code</a>]</p>
-   ```
+1. **论文链接（`[Paper] [Code]`）**。6 条论文下面都已有这一行，共 12 个位置：
+   **7 个是真链接**（arXiv 编号经 arXiv API 核对、仓库经 GitHub 核对），
+   **5 个是占位**（琥珀色、不可点，鼠标悬停有提示）。
+
+   | 条目 | Paper | Code |
+   | --- | --- | --- |
+   | CalibGS (WACV 2027) | 占位 | 占位 |
+   | Nexus (ACCV 2026) | arXiv:2608.16104 | `ZQESLWYZ/Nexus` |
+   | Beyond Similarity Matching | arXiv:2608.16103 | 占位 |
+   | Task-Prototype Guided Flow Matching | arXiv:2609.27780 | `ZQESLWYZ/TP-Flow` |
+   | Fusion-Aware Direct 3D Gaussian Generation | arXiv:2609.27779 | 占位 |
+   | Visibility-Guided Structured Measure Flow | arXiv:2609.27778 | 占位 |
+
+   补齐某个占位，就是把这一小段
+   `<span class="link-pending" title="...">[Code]</span>`
+   换成
+   `[<a href="URL" target="_blank" rel="noopener">Code</a>]`。
+   全部补齐后 `tools/check_site.py` 的告警会消失（它会数还剩几个占位）。
 2. **换一张高清头像（建议）**。现在这张是 248×256、8 KB，显示宽度约 260px，勉强够用但偏糊。
    有更大原图（比如 600×620 以上、< 300 KB）直接覆盖 `assets/photo.jpg` 即可，
    顺手把第 61–62 行 `<img>` 的 `width` / `height` 改成新图的真实像素。
@@ -142,6 +155,8 @@ git push -u origin main
 - 新增头像：`assets/photo.jpg` + `js/main.js` 的加载失败降级逻辑。
 - 论文标题 / 作者按 `publications.bib` 修正（此前两篇正式论文写的是 `et al.`，实际为唯一作者）。
 - 清理了此前误提交进仓库的临时文件，并加了 `.gitignore`。
+- 每条论文下面都加了 `[Paper] [Code]` 行：arXiv 编号与 GitHub 仓库经外部核对后填入真链接，
+  核实不到的 5 个位置留成琥珀色不可点占位（避免出现死链或错链）。
 
 **上一版**：卡片式设计 + 顶部导航 + 深色模式（已被本版替换）。
 

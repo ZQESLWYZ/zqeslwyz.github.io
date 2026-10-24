@@ -173,6 +173,15 @@ def main():
     else:
         failures.append(f"publication list incomplete: {pubs} entries (expected 6), {todos} TODO placeholder(s)")
 
+    link_rows = cdp.eval("document.querySelectorAll('ul.pubs > li > .pub-links').length")
+    link_real = cdp.eval("""document.querySelectorAll('.pub-links a[href^="http"]').length""")
+    link_pending = cdp.eval("document.querySelectorAll('.pub-links .link-pending').length")
+    if link_rows == 6:
+        notes.append(f"[Paper]/[Code] row on all {link_rows} entries "
+                     f"({link_real} real links, {link_pending} still pending)")
+    else:
+        failures.append(f"expected a .pub-links row on all 6 entries, found {link_rows}")
+
     # ------------------------------------------------------ desktop layout
     probe = json.loads(cdp.eval(OVERFLOW))
     if probe["bad"] or probe["over"]:

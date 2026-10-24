@@ -110,6 +110,26 @@ a:hover {
   line-height: 1;
 }
 
+/* [Paper] / [Code] row under each publication entry */
+.pub-links {
+  margin: 0.35em 0 0;
+  font-size: 95%;
+}
+
+.pub-links a {
+  color: #224b8d;
+}
+
+/* A link that still has no URL: shown amber and not clickable on purpose,
+   so the site never carries a dead or wrong link. */
+.link-pending {
+  color: #9a6a00;
+  background: #fff8e1;
+  border-bottom: 1px dotted #e0a800;
+  cursor: help;
+  padding: 0 1px;
+}
+
 .links a {
   display: inline-block;
   margin-right: 10px;

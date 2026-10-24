@@ -5,6 +5,7 @@
 3. CSS brace balance / unterminated comments
 4. JS syntax via `node --check` when node is available
 """
+import re
 import os
 import sys
 from html.parser import HTMLParser
@@ -112,6 +113,16 @@ def check_html(path):
         else:
             failures.append(f"{os.path.basename(path)}: missing local reference {ref}")
     notes.append(f"{os.path.basename(path)}: {checked} local references checked")
+
+    # strip HTML comments first: the explanatory comment above the publication
+    # entries also mentions the marker, and must not be counted as a real slot
+    markup_only = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+    pending_links = markup_only.count('class="link-pending"')
+    if pending_links:
+        warnings.append(
+            f"{os.path.basename(path)}: {pending_links} [Paper]/[Code] slot(s) have no URL yet "
+            '(class="link-pending": rendered amber, not clickable)'
+        )
 
 
 def check_css(path):
