@@ -141,7 +141,7 @@ a:hover {
   gap: 0.2em;
   width: 100%;
   max-width: 260px;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   margin-top: 0.4em;
   background: #f2f3f5;
   border: 1px dashed #b6bbc2;

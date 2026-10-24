@@ -4,11 +4,11 @@ Asserts what static analysis cannot:
   * style.css applied (page/card colours, Georgia serif, heading rules)
   * desktop two-column header, mobile single-column collapse
   * no horizontal overflow at 1180px and 390px
-  * portrait fallback kicks in while assets/photo.jpg is absent
-  * TODO (unfinished preprint) entries stay visibly highlighted
+  * portrait either loads from assets/photo.jpg or degrades to the placeholder
+  * publication list has all 6 entries and no placeholder left
   * no console errors or uncaught exceptions
 
-Run:  conda run -n deeplearn python tools_cdp_check.py <site-dir>
+Run:  conda run -n deeplearn python tools/render_check.py <site-dir>
 """
 import base64
 import io
@@ -138,7 +138,6 @@ def main():
         ("card max-width 960px", "getComputedStyle(document.body).maxWidth", "960px"),
         ("h2 grey underline", "getComputedStyle(document.querySelector('h2')).borderBottomWidth", "1px"),
         ("link colour", "getComputedStyle(document.querySelector('.links a')).color", "rgb(34, 75, 141)"),
-        ("todo entry highlighted", "getComputedStyle(document.querySelector('li.todo')).backgroundColor", "rgb(255, 248, 225)"),
         ("footer is grey+small", "getComputedStyle(document.querySelector('.footer')).borderTopWidth", "1px"),
     ]
     for label, expr, expected in checks:
@@ -154,16 +153,25 @@ def main():
     else:
         failures.append(f"css: expected Georgia first in font stack, got {font}")
 
-    # ---------------------------------------------------- portrait fallback
-    has_fallback = cdp.eval("!!document.querySelector('.portrait-fallback')")
-    img_gone = cdp.eval("!document.getElementById('portrait')")
+    # ------------------------------------------------------- portrait + data
+    img_ok = cdp.eval("""(() => { const el = document.getElementById('portrait');
+        return !!el && el.complete && el.naturalWidth > 0; })()""")
     fb_box = cdp.eval("""(() => { const el = document.querySelector('.portrait-fallback');
         if (!el) return 'none'; const r = el.getBoundingClientRect();
         return Math.round(r.width) + 'x' + Math.round(r.height); })()""")
-    if has_fallback and img_gone and fb_box not in ("none", "0x0"):
-        notes.append(f"portrait fallback active while photo.jpg is missing ({fb_box})")
+    if img_ok:
+        notes.append("portrait image loads from assets/photo.jpg")
+    elif fb_box not in ("none", "0x0"):
+        notes.append(f"portrait falls back to the initials placeholder ({fb_box})")
     else:
-        failures.append(f"portrait fallback problem: present={has_fallback} img_removed={img_gone} size={fb_box}")
+        failures.append(f"portrait is broken: loaded={img_ok} fallback={fb_box}")
+
+    pubs = cdp.eval("document.querySelectorAll('ul.pubs > li').length")
+    todos = cdp.eval("document.querySelectorAll('li.todo').length")
+    if pubs == 6 and todos == 0:
+        notes.append(f"publication data complete: {pubs} entries, no placeholder left")
+    else:
+        failures.append(f"publication list incomplete: {pubs} entries (expected 6), {todos} TODO placeholder(s)")
 
     # ------------------------------------------------------ desktop layout
     probe = json.loads(cdp.eval(OVERFLOW))

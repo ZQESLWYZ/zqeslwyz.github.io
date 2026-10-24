@@ -64,7 +64,7 @@ class Refs(HTMLParser):
                 self.refs.append(value)
 
 
-PENDING = {"assets/photo.jpg"}   # documented in README section 4: upload your portrait
+PENDING = set()   # nothing pending: assets/photo.jpg is in place
 warnings = []
 
 
