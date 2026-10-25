@@ -69,20 +69,12 @@
       <h2>Short Bio</h2>
       <p>
         I am an undergraduate student in Computer Science at Henan Institute of Science and
-        Technology (2023&ndash;2027, expected). My research sits in 3D computer vision and
-        generative AI: novel-view synthesis and 3D Gaussian Splatting, sparse-view surface
-        reconstruction, and efficient rectified-flow text-to-image generation.
+        Technology. I am working hard to prepare for a fully funded PhD.
       </p>
+
+      <h2>Research Interests</h2>
       <p>
-        My recent work is about making reconstruction and generation reliable rather than merely
-        plausible &mdash; letting a model know <i>when it should not act</i>. I built CalibGS, which
-        recasts 3D Gaussian Splatting densification as a calibrated three-action decision
-        (WACV 2027), and Nexus, a structured sparse framework for efficient text-to-image
-        generation (ACCV 2026). Before that I worked on monocular metric depth calibration and
-        few-shot visuomotor policies.
-      </p>
-      <p class="interests">
-        Research interests: 3D Computer Vision &middot; Generative AI &middot; Learning Methods &middot;
+        3D Computer Vision &middot; Generative AI &middot; Learning Methods &middot;
         Research Workflow
       </p>
 
@@ -107,14 +99,12 @@
         <li>
           <b><span class="venue">[WACV 2027]</span></b>&ensp;CalibGS: Calibrated Selective Geometric Completion for 3D Gaussian Splatting<br>
           <b><i>Yizhao Wang</i></b><br>
-          <span class="note">Spending primitives only where multi-view evidence supports them.</span>
           <p class="pub-links"><span class="link-pending" title="No public Paper URL yet">[Paper]</span> <span class="link-pending" title="No public Code repository yet">[Code]</span></p>
         </li>
 
         <li>
           <b><span class="venue">[ACCV 2026]</span></b>&ensp;Nexus: Structured Synergy for Efficient Text-to-Image Generation using Rectified Flow Model<br>
           <b><i>Yizhao Wang</i></b><br>
-          <span class="note">Competitive quality at a fraction of the activated compute.</span>
           <p class="pub-links">[<a href="https://arxiv.org/abs/2608.16104" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/ZQESLWYZ/Nexus" target="_blank" rel="noopener">Code</a>]</p>
         </li>
 
@@ -145,89 +135,11 @@
         </li>
       </ul>
 
-      <h2>Research Projects</h2>
-
-      <ul class="projects">
-        <li>
-          <b>CalibGS &mdash; Calibrated Selective Geometric Completion for 3D Gaussian Splatting</b>
-          <span class="tag">[WACV 2027]</span><br>
-          <i>Spending primitives only where multi-view evidence supports them.</i>
-          <ul>
-            <li>Recast 3D Gaussian Splatting densification as a calibrated three-action decision
-              &mdash; free propagation, surface-constrained completion, or rejection &mdash; instead of
-              reading every unexplained image residual as evidence for new geometry.</li>
-            <li>Built the full risk pipeline: multi-view evidence features (track support,
-              triangulation geometry, reprojection consistency, gradient agreement, local planar
-              structure), an MLP predictor for the early held-out-view damage event, and a monotone
-              isotonic calibration map fitted on a scene-disjoint split, leaving only the two risk
-              thresholds tunable.</li>
-            <li>On sparse-view DTU (24 input views) under a matched 0.20M-Gaussian budget, reached
-              24.18 dB PSNR and 0.694 mm Chamfer distance, cutting Chamfer by 31.4% and depth
-              inconsistency by 36.6% relative to GaussianPro, and outperformed 3DGS, 2DGS, and
-              Sparse2DGS on DTU, Replica, Tanks and Temples, and Mip-NeRF 360.</li>
-            <li>Showed that the gate measures geometric failure rather than image error alone:
-              0.836 AUROC at 0.024 ECE, versus 0.684 AUROC and 0.118 ECE for a residual-only score,
-              with ablations separating the contributions of calibration, rejection, and the planar
-              constraint.</li>
-          </ul>
-        </li>
-
-        <li>
-          <b>Nexus &mdash; Structured Synergy for Efficient Text-to-Image Generation using Rectified Flow Model</b>
-          <span class="tag">[ACCV 2026]</span><br>
-          <i>Competitive quality at a fraction of the activated compute.</i>
-          <ul>
-            <li>Designed Nexus, a rectified-flow text-to-image framework that jointly optimizes three
-              levers usually studied in isolation: sparse MoE-FFN layers for capacity at low activated
-              cost, Gated DeltaNet linear attention for near-linear scaling with sequence length, and
-              expert-level low-bit quantization-aware training.</li>
-            <li>Set the block layout (six dual-stream layers followed by single-stream blocks,
-              CLIP-G/14 and T5-XXL conditioning, no added cross-attention) and the per-expert INT4
-              scaling scheme that keeps the router and state matrix in FP16, where uniform global INT4
-              degrades FID from 5.8 to 7.9.</li>
-            <li>A 7B-parameter model activates only 1.6B parameters: FID 5.8 and CLIP score 0.329 on
-              COCO-30K, 1.42 s per 512&times;512 image at 3.2 GB peak memory and 185 GFLOPs on a single
-              A100 &mdash; about 2.8&times; faster and 1.7&times; lighter than SD3-Medium.</li>
-            <li>Kept prompt following near the large-model tier under a common INT4 budget (GenEval
-              0.61, DPG-bench 82.47, ahead of SD3-Medium-INT4 and FLUX.1-INT4 in latency), and scaled to
-              1024&times;1024 and 2048&times;2048 (11.2 s, 12.5 GB) where quadratic attention becomes
-              prohibitively slow or runs out of memory.</li>
-          </ul>
-        </li>
-
-        <li>
-          <b>Local-to-Global Metric Depth Calibration</b>
-          <span class="tag">[Monocular Depth]</span><br>
-          <i>Turning relative depth into metric depth, region by region.</i>
-          <ul>
-            <li>Built a boundary-aware region graph combining global affine calibration, selectively
-              activated local residuals, and collapse regularization without camera metadata or sparse
-              depth.</li>
-            <li>With frozen Depth Anything V2-Large features, reduced zero-shot DIODE AbsRel from
-              0.2660 to 0.2358 and increased &delta;<sub>1</sub> from 0.6680 to 0.7037.</li>
-          </ul>
-        </li>
-
-        <li>
-          <b>Task-Prototype Guided Flow Matching for Few-Shot Generalization in Vision-Language Robot Manipulation</b>
-          <span class="tag">[Embodied AI]</span><br>
-          <i>Learning robot skills from a handful of demonstrations.</i>
-          <ul>
-            <li>Designed a few-shot VLA policy using symmetric cross-attention task prototypes, a
-              prototype-adaptive flow prior, gated AdaLN, and episodic support-query training.</li>
-            <li>Built the PyTorch/ODE action-generation pipeline for LEROBOT-SO101; achieved 66.8%,
-              79.6%, and 82.1% success at 1/4/6 shots and 54.3 ms inference at 10 Hz.</li>
-          </ul>
-        </li>
-      </ul>
-
       <h2>Education</h2>
       <ul>
         <li>
           <b>B.Eng. in Computer Science</b>, 2023 &ndash; 2027 (expected)<br>
-          Henan Institute of Science and Technology, Henan, China<br>
-          Four-year undergraduate program with a required graduation thesis.
-          WAM (Weighted Average Mark): 83.05; major foundation coursework WAM: 88.9.
+          Henan Institute of Science and Technology, Henan, China
         </li>
       </ul>
 

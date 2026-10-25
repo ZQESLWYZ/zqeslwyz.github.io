@@ -44,6 +44,10 @@ conda run -n deeplearn python tools\check_site.py .
 conda run -n deeplearn python tools\render_check.py .
 
 # 3) 想看一眼整页效果，生成截图到指定目录
+# 3) 检查线上已部署版本（直接传 URL 即可）
+conda run -n deeplearn python tools\render_check.py https://zqeslwyz.github.io/
+
+# 4) 想看一眼整页效果，生成截图到指定目录
 conda run -n deeplearn python tools\make_preview.py . C:\temp\preview
 ```
 

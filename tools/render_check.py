@@ -8,7 +8,7 @@ Asserts what static analysis cannot:
   * publication list has all 6 entries and no placeholder left
   * no console errors or uncaught exceptions
 
-Run:  conda run -n deeplearn python tools/render_check.py <site-dir>
+Run:  conda run -n deeplearn python tools/render_check.py <site-dir | https://url>
 """
 import base64
 import io
@@ -23,7 +23,15 @@ import urllib.request
 import websocket
 from PIL import Image, ImageStat
 
-SITE = sys.argv[1]
+TARGET = sys.argv[1]
+
+
+def page_url(target):
+    """Accept either a site directory (absolute or relative) or a deployed URL."""
+    if target.startswith(("http://", "https://")):
+        return target
+    path = os.path.abspath(os.path.join(target, "index.html"))
+    return "file:///" + path.replace("\\", "/")
 PORT = 9333
 SCRATCH = os.environ.get("PI_SCRATCH_DIR", os.getcwd())
 PROFILE = os.path.join(SCRATCH, "edge-profile")
@@ -111,7 +119,7 @@ def main():
         "--no-default-browser-check", "--disable-extensions",
         f"--remote-debugging-port={PORT}", f"--user-data-dir={PROFILE}",
         "--window-size=1180,900",
-        "file:///" + os.path.join(SITE, "index.html").replace("\\", "/"),
+        page_url(TARGET),
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     target = None
